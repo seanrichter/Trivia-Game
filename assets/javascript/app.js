@@ -1,6 +1,6 @@
 
 var panel = $('#quiz-area');
-var countStartNumber = 30;
+var countStartNumber = 20;
 
 
 /////////////////////////////////////////
@@ -9,16 +9,16 @@ var countStartNumber = 30;
 
 /////////////////////////////////////////
 
-$(document).on('click', '#start-over', function(e) {
+$(document).on('click', '#start-over', function(f) {
     game.reset();
 });
 
-$(document).on('click', 'answer-button', function(e) {
-    game.clicked(e);
+$(document).on('click', 'answer-button', function(f) {
+    game.clicked();
 });
 
-$(document).on('click', '#start', function(e) {
-    $('#subwrapper').prepend('<h2>Time Remaining: <span id="counter-number">30</span> Seconds</h2>');
+$(document).on('click', '#start', function(f) {
+    $('#subwrapper').prepend('<h2>Time Remaining: <span id="counter-number">20</span> Seconds</h2>');
     game.loadQuestion();
 });
 
@@ -34,42 +34,42 @@ var questions = [{
     question:  "In which month is labor day a national holiday?",
     answers: ["January", "March.", "December", "September"],
     correctAnswer: "September",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/labor-day.png"
 }, {
     question:  "Which state lies to the south of Georgia?",
     answers: ["Alabama", "Louisiana", "Florida", "South Carolina"],
     correctAnswer: "Florida",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/Flag_of_Florida.svg"
 }, {
     question:  "Which ocean is off the California coast?",
     answers: ["Pacific", "Gulf of Mexico", "Indian", "Atlantic"],
     correctAnswer: "Pacific",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/pacific-ocean.jpg"
 }, {
     question:  "In which state is Harvard University located?",
     answers: ["Washington", "Massachusetts", "New York", "Vermont"],
     correctAnswer: "Massachusetts",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/mass flat"
 }, {
     question:  "Which city is the home of Jazz music?",
     answers: ["Memphis", "Little Rock", "New Orleans", "Dallas"],
     correctAnswer: "New Orleans",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/new orleans jazz music.jpg"
 }, {
     question:  "Which stats is home of the Crater of Diamonds state park?",
     answers: ["Arkansas", "Missourri", "Wyoming", "Nevada"],
     correctAnswer: "Arkansas",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/arkansas.png"
 }, {
     question:  "Which state was the first to legalize marijuana for recreational use?",
     answers: ["California", "New York", "Iowa", "Colorado"],
     correctAnswer: "Colorado",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/colorado.jpg"
 }, {
     question:  "Which state are the Smokey Mountains located?",
     answers: ["Georgia", "Tennessee", "North Carolina", "Kentucky"],
     correctAnswer: "Tennessee",
-    image: "assets/images/toystory.gif"
+    image: "assets/images/tennessee flag.jpg"
 }];
 
 
@@ -85,15 +85,15 @@ var game = {
         game.counter--;
         $('#counter-number').html(game.counter);
 
-        if (game.counter ===0){
-            console.log('TIMES UP');
+        if (game.counter === 0){
+            console.log('TIME UP');
             game.timeUp();
         }
     },
  loadQuestion: function(){
      timer = setInterval(game.countdown, 1000);
      panel.html('<h2>' + questions[this.currentQuestion].question + '</h2>' );
-     for (var i = 0; i<questions[this.currentQuestion].answers.length; i++) {
+     for (var i = 0; i<questions[this.currentQuestion].answers.length; i++){
          panel.append('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].answers[i] + '">' + questions[this.currentQuestion].answers[i]+ '</button>');
      }
  },
@@ -112,9 +112,9 @@ var game = {
      panel.append('<img src="' + questions[this.currentQuestion].image + '" />');
 
      if (game.currentQuestion === questions.length - 1){
-         setTimeout(game.results, 3 * 1000);
+         setTimeout(game.results, 2 * 1000);
      } else {
-         setTimeout(game.nextQuestion, 3 * 1000);
+         setTimeout(game.nextQuestion, 2 * 1000);
      }
     },
     results: function() {
@@ -127,10 +127,10 @@ var game = {
         panel.append('<h3>Unanswered: ' + (questions.length - (game.incorrect + game.correct)) + '</h3>');
         panel.append('<br><button id="start-over">Start Over?</button>');
     },
-    clicked: function(e) {
+    clicked: function(f) {
         clearInterval(timer);
 
-        if($(e.target).data("name") === questions[this.currentQuestion].correctAnswer){
+        if($(f.target).data("name") === questions[this.currentQuestion].correctAnswer){
             this.answeredCorrectly();
         } else {
             this.answeredIncorrectly();
@@ -144,9 +144,9 @@ var game = {
         panel.append('<img src"' + questions[game.currentQuestion].image + '" />');
 
         if (game.currentQuestion === questions.length -1) {
-            setTimeout(game.results, 3 * 1000);
+            setTimeout(game.results, 2 * 1000);
         } else {
-            setTimeout(game.nextQuestion, 3 * 1000);
+            setTimeout(game.nextQuestion, 2 * 1000);
         }
     },
     answeredCorrectly: function() {
@@ -156,9 +156,9 @@ var game = {
         panel.append('<img src="' + questions[game.currentQuestion].image + '" />');
 
         if (game.currentQuestion === questions.length - 1){
-            setTimeout(game.results, 3 * 1000);
+            setTimeout(game.results, 2 * 1000);
         } else {
-            setTimeout(game.nextQuestion, 3 * 1000);
+            setTimeout(game.nextQuestion, 2 * 1000);
         }
         },
     reset: function(){
@@ -166,6 +166,6 @@ var game = {
         this.counter = countStartNumber;
         this.correct = 0;
         this.incorrect = 0;
-        this.loadQuestion();
+        this.loadQuestion()
     }
 };

@@ -1,6 +1,6 @@
 html, body {
     height: 100;
-    background-color: green;
+    background-color: rgb(177, 63, 63);
 }
 
 body {
@@ -10,7 +10,7 @@ body {
 
 #wrapper {
     margin: 2.5% auto;
-    background-color:purple;
+    background-color:blue;
     width: 960px;
     height: 95%;
     box-sizing: border-box;
@@ -39,7 +39,7 @@ h1 {
     font-family: 'Ubuntu', sans-serif;
     font-size: 6.5em;
     font-weight: bold;
-    color: red;
+    color: rgb(177, 63, 63);
     padding-top: 2.5%;
 }
 
@@ -54,12 +54,13 @@ h3 {
 }
 
 #start {
-    margin-top: 10%;
+    margin-top: 5%;
+    margin-bottom: 30%;
     border: 2px solid blue;
-    background:red;
+    background: rgb(177, 63, 63);
 }
 
 button:hover {
     border:2px solid blue;
-    background:red;
+    background: rgb(177, 63, 63);
 }
