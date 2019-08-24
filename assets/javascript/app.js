@@ -9,15 +9,15 @@ var countStartNumber = 20;
 
 /////////////////////////////////////////
 
-$(document).on('click', '#start-over', function(f) {
+$(document).on('click', '#start-over', function(e) {
     game.reset();
 });
 
-$(document).on('click', 'answer-button', function(f) {
+$(document).on('click', 'answer-button', function(e) {
     game.clicked();
 });
 
-$(document).on('click', '#start', function(f) {
+$(document).on('click', '#start', function(e) {
     $('#subwrapper').prepend('<h2>Time Remaining: <span id="counter-number">20</span> Seconds</h2>');
     game.loadQuestion();
 });
@@ -56,7 +56,7 @@ var questions = [{
     correctAnswer: "New Orleans",
     image: "assets/images/new orleans jazz music.jpg"
 }, {
-    question:  "Which stats is home of the Crater of Diamonds state park?",
+    question:  "Which state is home to the Crater of Diamonds state park?",
     answers: ["Arkansas", "Missourri", "Wyoming", "Nevada"],
     correctAnswer: "Arkansas",
     image: "assets/images/arkansas.png"
@@ -86,18 +86,18 @@ var game = {
         $('#counter-number').html(game.counter);
 
         if (game.counter === 0){
-            console.log('TIME UP');
+            console.log('TIMES UP');
             game.timeUp();
         }
     },
  loadQuestion: function(){
      timer = setInterval(game.countdown, 1000);
      panel.html('<h2>' + questions[this.currentQuestion].question + '</h2>' );
-     for (var i = 0; i<questions[this.currentQuestion].answers.length; i++){
+     for (var i = 0; i<questions[this.currentQuestion].answers.length; i++) {
          panel.append('<button class="answer-button" id="button"' + 'data-name="' + questions[this.currentQuestion].answers[i] + '">' + questions[this.currentQuestion].answers[i]+ '</button>');
      }
  },
- nextQuestions: function(){
+ nextQuestion: function(){
      game.counter = countStartNumber;
      $('#counter-number').html(game.counter);
      game.currentQuestion++;
@@ -127,10 +127,10 @@ var game = {
         panel.append('<h3>Unanswered: ' + (questions.length - (game.incorrect + game.correct)) + '</h3>');
         panel.append('<br><button id="start-over">Start Over?</button>');
     },
-    clicked: function(f) {
+    clicked: function(e) {
         clearInterval(timer);
 
-        if($(f.target).data("name") === questions[this.currentQuestion].correctAnswer){
+        if($(e.target).data("name") === questions[this.currentQuestion].correctAnswer){
             this.answeredCorrectly();
         } else {
             this.answeredIncorrectly();
