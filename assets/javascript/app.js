@@ -31,44 +31,44 @@ $(document).on('click', '#start', function(e) {
 //////////////////////////////////////////
 
 var questions = [{
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "In which month is labor day a national holiday?",
+    answers: ["January", "March.", "December", "September"],
+    correctAnswer: "September",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "Which state lies to the south of Georgia?",
+    answers: ["Alabama", "Louisiana", "Florida", "South Carolina"],
+    correctAnswer: "Florida",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "Which ocean is off the California coast?",
+    answers: ["Pacific", "Gulf of Mexico", "Indian", "Atlantic"],
+    correctAnswer: "Pacific",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "In which state is Harvard University located?",
+    answers: ["Washington", "Massachusetts", "New York", "Vermont"],
+    correctAnswer: "Massachusetts",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "Which city is the home of Jazz music?",
+    answers: ["Memphis", "Little Rock", "New Orleans", "Dallas"],
+    correctAnswer: "New Orleans",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "Which stats is home of the Crater of Diamonds state park?",
+    answers: ["Arkansas", "Missourri", "Wyoming", "Nevada"],
+    correctAnswer: "Arkansas",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "Which state was the first to legalize marijuana for recreational use?",
+    answers: ["California", "New York", "Iowa", "Colorado"],
+    correctAnswer: "Colorado",
     image: "assets/images/toystory.gif"
 }, {
-    question:  "What was the first full length CGI movie?",
-    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
-    correctAnswer: "Toy Story",
+    question:  "Which state are the Smokey Mountains located?",
+    answers: ["Georgia", "Tennessee", "North Carolina", "Kentucky"],
+    correctAnswer: "Tennessee",
     image: "assets/images/toystory.gif"
 }];
 
