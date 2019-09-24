@@ -1,16 +1,16 @@
 html, body {
     height: 100;
     background-color: rgb(177, 63, 63);
-}
-
-body {
-    background-image: url();
+    background-image: url(http://nextrestaurants.com/wp-content/uploads/2019/07/Restaurants-TriviaNights-Marketing-1024x576.png);
     text-align: center;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-size: cover;
 }
 
 #wrapper {
     margin: 2.5% auto;
-    background-color:blue;
+    background-color: blue;
     width: 960px;
     height: 95%;
     box-sizing: border-box;
@@ -61,6 +61,6 @@ h3 {
 }
 
 button:hover {
-    border:2px solid blue;
+    border: 2px solid blue;
     background: rgb(177, 63, 63);
 }
