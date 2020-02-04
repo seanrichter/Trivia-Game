@@ -10,5 +10,4 @@ A trivia form with multiple choice or true/false options. The player will have a
 * setTimeout
 * setInterval
 
-
-https://seanrichter.github.io/Trivia-Game/
+[Trivia-Game](https://seanrichter.github.io/Trivia-Game/)
