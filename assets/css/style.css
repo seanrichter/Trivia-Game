@@ -1,70 +1,71 @@
-html, body {
-    height: 100;
-    background-image: url(http://nextrestaurants.com/wp-content/uploads/2019/07/Restaurants-TriviaNights-Marketing-1024x576.png);
-    text-align: center;
-    background-repeat: no-repeat;
-    height: 100%;
-    background-size: cover;
+html,
+body {
+  height: 100;
+  background-image: url(http://nextrestaurants.com/wp-content/uploads/2019/07/Restaurants-TriviaNights-Marketing-1024x576.png);
+  text-align: center;
+  background-repeat: no-repeat;
+  height: 100%;
+  background-size: cover;
 }
 
 #wrapper {
-    margin: 2.5% auto;
-    width: 960px;
-    height: 90%;
-    box-sizing: border-box;
-    margin-bottom: 15px;
-    line-height: 25px;
-    background: rgba(245, 247, 245, 0.6);
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0px 1px 2px #666666;
+  margin: 2.5% auto;
+  width: 960px;
+  height: 90%;
+  box-sizing: border-box;
+  margin-bottom: 15px;
+  line-height: 25px;
+  background: rgba(245, 247, 245, 0.6);
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px #666666;
 }
 
 #subwrapper {
-    position: relative;
+  position: relative;
 }
 
 button {
-    display: block;
-    width: 50%;
-    height: 20%;
-    margin: 0 auto;
-    border: none;
-    cursor: pointer;
-    background: transparent;
-    font-size: 45px;
+  display: block;
+  width: 50%;
+  height: 20%;
+  margin: 0 auto;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  font-size: 45px;
 }
 
 img {
-    height: 200px;
+  height: 200px;
 }
 
 h1 {
-    font-family: 'Ubuntu', sans-serif;
-    font-size: 6.5em;
-    font-weight: bold;
-    color: #e911b3;
-    padding-top: 2.5%;
+  font-family: "Ubuntu", sans-serif;
+  font-size: 6.5em;
+  font-weight: bold;
+  color: #e911b3;
+  padding-top: 2.5%;
 }
 
 h2 {
-    font-size: 35px;
-    margin-bottom: 25px;
+  font-size: 35px;
+  margin-bottom: 25px;
 }
 
 h3 {
-    font-size: 25px;
-    margin-bottom: 10px;
+  font-size: 25px;
+  margin-bottom: 10px;
 }
 
 #start {
-    margin-top: 5%;
-    margin-bottom: 30%;
-    border: 2px solid blue;
-    background: #e911b3;
+  margin-top: 5%;
+  margin-bottom: 30%;
+  border: 2px solid blue;
+  background: #e911b3;
 }
 
 button:hover {
-    border: 2px solid blue;
-    background: #e911b3;
+  border: 2px solid blue;
+  background: #e911b3;
 }
