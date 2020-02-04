@@ -1,84 +1,67 @@
-var panel = $("#quiz-area");
-var countStartNumber = 20;
+var card = $("#quiz-area");
+var countStartNumber = 30;
 
-/////////////////////////////////////////
-
-//CLICK EVENTS
-
-/////////////////////////////////////////
-
-$(document).on("click", "#start-over", function(e) {
-  game.reset();
-});
-
-$(document).on("click", "answer-button", function(e) {
-  game.clicked();
-});
-
-$(document).on("click", "#start", function(e) {
-  $("#subwrapper").prepend(
-    '<h2>Time Remaining: <span id="counter-number">20</span> Seconds</h2>'
-  );
-  game.loadQuestion();
-});
-
-///////////////////////////////////////
-
-//Question Set
-
-//////////////////////////////////////////
-
+// Question set
 var questions = [
   {
-    question: "In which month is labor day a national holiday?",
-    answers: ["January", "March.", "December", "September"],
-    correctAnswer: "September",
-    image: "assets/images/labor-day.png"
+    question: "What was the first full length CGI movie?",
+    answers: ["A Bug's Life", "Monsters Inc.", "Toy Story", "The Lion King"],
+    correctAnswer: "Toy Story",
+    image: "assets/images/toystory.gif"
   },
   {
-    question: "Which state lies to the south of Georgia?",
-    answers: ["Alabama", "Louisiana", "Florida", "South Carolina"],
-    correctAnswer: "Florida",
-    image: "assets/images/Flag_of_Florida.svg"
+    question: "Which of these is NOT a name of one of the Spice Girls?",
+    answers: ["Sporty Spice", "Fred Spice", "Scary Spice", "Posh Spice"],
+    correctAnswer: "Fred Spice",
+    image: "assets/images/spicegirls.gif"
   },
   {
-    question: "Which ocean is off the California coast?",
-    answers: ["Pacific", "Gulf of Mexico", "Indian", "Atlantic"],
-    correctAnswer: "Pacific",
-    image: "assets/images/pacific-ocean.jpg"
+    question: "Which NBA team won the most titles in the 90s?",
+    answers: [
+      "New York Knicks",
+      "Portland Trailblazers",
+      "Los Angeles Lakers",
+      "Chicago Bulls"
+    ],
+    correctAnswer: "Chicago Bulls",
+    image: "assets/images/bulls.gif"
   },
   {
-    question: "In which state is Harvard University located?",
-    answers: ["Washington", "Massachusetts", "New York", "Vermont"],
-    correctAnswer: "Massachusetts",
-    image: "assets/images/mass flat"
+    question: "Which group released the hit song, 'Smells Like Teen Spirit'?",
+    answers: ["Nirvana", "Backstreet Boys", "The Offspring", "No Doubt"],
+    correctAnswer: "Nirvana",
+    image: "assets/images/nirvanabark.gif"
   },
   {
-    question: "Which city is the home of Jazz music?",
-    answers: ["Memphis", "Little Rock", "New Orleans", "Dallas"],
-    correctAnswer: "New Orleans",
-    image: "assets/images/new orleans jazz music.jpg"
-  },
-  {
-    question: "Which state is home to the Crater of Diamonds state park?",
-    answers: ["Arkansas", "Missourri", "Wyoming", "Nevada"],
-    correctAnswer: "Arkansas",
-    image: "assets/images/arkansas.png"
+    question: 'Which popular Disney movie featured the song, "Circle of Life"?',
+    answers: ["Aladdin", "Hercules", "Mulan", "The Lion King"],
+    correctAnswer: "The Lion King",
+    image: "assets/images/lionking.gif"
   },
   {
     question:
-      "Which state was the first to legalize marijuana for recreational use?",
-    answers: ["California", "New York", "Iowa", "Colorado"],
-    correctAnswer: "Colorado",
-    image: "assets/images/colorado.jpg"
+      'Finish this line from the Fresh Prince of Bel-Air theme song: "I whistled for a cab and when it came near, the license plate said..."',
+    answers: ["Dice", "Mirror", "Fresh", "Cab"],
+    correctAnswer: "Fresh",
+    image: "assets/images/fresh.gif"
   },
   {
-    question: "Which state are the Smokey Mountains located?",
-    answers: ["Georgia", "Tennessee", "North Carolina", "Kentucky"],
-    correctAnswer: "Tennessee",
-    image: "assets/images/tennessee flag.jpg"
+    question: "What was Doug's best friend's name?",
+    answers: ["Skeeter", "Mark", "Zach", "Cody"],
+    correctAnswer: "Skeeter",
+    image: "assets/images/skeeter.gif"
+  },
+  {
+    question:
+      "What was the name of the principal at Bayside High in Saved By The Bell?",
+    answers: ["Mr.Zhou", "Mr.Driggers", "Mr.Belding", "Mr.Page"],
+    correctAnswer: "Mr.Belding",
+    image: "assets/images/belding.gif"
   }
 ];
+
+// Variable to hold our setInterval
+var timer;
 
 var game = {
   questions: questions,
@@ -86,106 +69,122 @@ var game = {
   counter: countStartNumber,
   correct: 0,
   incorrect: 0,
-  countdown: function() {
-    game.counter--;
-    $("#counter-number").html(game.counter);
 
-    if (game.counter === 0) {
-      console.log("TIMES UP");
-      game.timeUp();
+  countdown: function() {
+    this.counter--;
+    $("#counter-number").text(this.counter);
+    if (this.counter === 0) {
+      console.log("TIME UP");
+      this.timeUp();
     }
   },
+
   loadQuestion: function() {
-    timer = setInterval(game.countdown, 1000);
-    panel.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
+    timer = setInterval(this.countdown.bind(this), 1000);
+
+    card.html("<h2>" + questions[this.currentQuestion].question + "</h2>");
+
     for (var i = 0; i < questions[this.currentQuestion].answers.length; i++) {
-      panel.append(
-        '<button class="answer-button" id="button"' +
-          'data-name="' +
+      card.append(
+        "<button class='answer-button' id='button' data-name='" +
           questions[this.currentQuestion].answers[i] +
-          '">' +
+          "'>" +
           questions[this.currentQuestion].answers[i] +
           "</button>"
       );
     }
   },
-  nextQuestion: function() {
-    game.counter = countStartNumber;
-    $("#counter-number").html(game.counter);
-    game.currentQuestion++;
-    game.loadQuestion();
-  },
-  timeUp: function() {
-    clearInterval(timer);
-    $("#counter-number").html(game.counter);
 
-    panel.html("<h2>Out of Time!</h2>");
-    panel.append(
+  nextQuestion: function() {
+    this.counter = window.countStartNumber;
+    $("#counter-number").text(this.counter);
+    this.currentQuestion++;
+    this.loadQuestion.bind(this)();
+  },
+
+  timeUp: function() {
+    clearInterval(window.timer);
+
+    $("#counter-number").text(this.counter);
+
+    card.html("<h2>Out of Time!</h2>");
+    card.append(
       "<h3>The Correct Answer was: " +
         questions[this.currentQuestion].correctAnswer
     );
-    panel.append('<img src="' + questions[this.currentQuestion].image + '" />');
+    card.append("<img src='" + questions[this.currentQuestion].image + "' />");
 
-    if (game.currentQuestion === questions.length - 1) {
-      setTimeout(game.results, 2 * 1000);
+    if (this.currentQuestion === questions.length - 1) {
+      setTimeout(this.results, 3 * 1000);
     } else {
-      setTimeout(game.nextQuestion, 2 * 1000);
+      setTimeout(this.nextQuestion, 3 * 1000);
     }
   },
-  results: function() {
-    clearInterval(timer);
 
-    panel.html("<h2>All Done, Here is how you did!</h2>");
-    $("#counter-number").html(game.counter);
-    panel.append("<h3>Correct Answers: " + game.correct + "</h3>");
-    panel.append("<h3>Incorrect Answers: " + game.incorrect + "</h3>");
-    panel.append(
+  results: function() {
+    clearInterval(window.timer);
+
+    card.html("<h2>All done, heres how you did!</h2>");
+
+    $("#counter-number").text(this.counter);
+
+    card.append("<h3>Correct Answers: " + this.correct + "</h3>");
+    card.append("<h3>Incorrect Answers: " + this.incorrect + "</h3>");
+    card.append(
       "<h3>Unanswered: " +
-        (questions.length - (game.incorrect + game.correct)) +
+        (questions.length - (this.incorrect + this.correct)) +
         "</h3>"
     );
-    panel.append('<br><button id="start-over">Start Over?</button>');
+    card.append("<br><button id='start-over'>Start Over?</button>");
   },
-  clicked: function(e) {
-    clearInterval(timer);
 
+  clicked: function(e) {
+    clearInterval(window.timer);
     if (
-      $(e.target).data("name") === questions[this.currentQuestion].correctAnswer
+      $(e.target).attr("data-name") ===
+      questions[this.currentQuestion].correctAnswer
     ) {
       this.answeredCorrectly();
     } else {
       this.answeredIncorrectly();
     }
   },
+
   answeredIncorrectly: function() {
-    game.incorrect++;
-    clearInterval(timer);
-    panel.html("<h2>Nope!</h2>");
-    panel.append(
+    this.incorrect++;
+
+    clearInterval(window.timer);
+
+    card.html("<h2>Nope!</h2>");
+    card.append(
       "<h3>The Correct Answer was: " +
-        questions[game.currentQuestion].correctAnswer +
+        questions[this.currentQuestion].correctAnswer +
         "</h3>"
     );
-    panel.append('<img src"' + questions[game.currentQuestion].image + '" />');
+    card.append("<img src='" + questions[this.currentQuestion].image + "' />");
 
-    if (game.currentQuestion === questions.length - 1) {
-      setTimeout(game.results, 2 * 1000);
+    if (this.currentQuestion === questions.length - 1) {
+      setTimeout(this.results.bind(this), 3 * 1000);
     } else {
-      setTimeout(game.nextQuestion, 2 * 1000);
+      setTimeout(this.nextQuestion.bind(this), 3 * 1000);
     }
   },
+
   answeredCorrectly: function() {
-    clearInterval(timer);
-    game.correct++;
-    panel.html("<h2>Correct!</h2>");
-    panel.append('<img src="' + questions[game.currentQuestion].image + '" />');
+    clearInterval(window.timer);
 
-    if (game.currentQuestion === questions.length - 1) {
-      setTimeout(game.results, 2 * 1000);
+    this.correct++;
+
+    card.html("<h2>Correct!</h2>");
+    card.append("<img src='" + questions[this.currentQuestion].image + "' />");
+
+    if (this.currentQuestion === questions.length - 1) {
+      setTimeout(this.results.bind(this), 3 * 1000);
     } else {
-      setTimeout(game.nextQuestion, 2 * 1000);
+      setTimeout(this.nextQuestion.bind(this), 3 * 1000);
     }
   },
+
   reset: function() {
     this.currentQuestion = 0;
     this.counter = countStartNumber;
@@ -194,3 +193,18 @@ var game = {
     this.loadQuestion();
   }
 };
+
+// CLICK EVENTS
+
+$(document).on("click", "#start-over", game.reset.bind(game));
+
+$(document).on("click", ".answer-button", function(e) {
+  game.clicked.bind(game, e)();
+});
+
+$(document).on("click", "#start", function() {
+  $("#sub-wrapper").prepend(
+    "<h2>Time Remaining: <span id='counter-number'>30</span> Seconds</h2>"
+  );
+  game.loadQuestion.bind(game)();
+});

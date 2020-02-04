@@ -1,28 +1,24 @@
 html,
 body {
-  height: 100;
-  background-image: url(http://nextrestaurants.com/wp-content/uploads/2019/07/Restaurants-TriviaNights-Marketing-1024x576.png);
-  text-align: center;
-  background-repeat: no-repeat;
   height: 100%;
-  background-size: cover;
+}
+
+body {
+  text-align: center;
+  background-image: url("../images/tacky.jpg");
 }
 
 #wrapper {
-  margin: 2.5% auto;
   width: 960px;
-  height: 90%;
+  height: 95%;
   box-sizing: border-box;
-  margin-bottom: 15px;
-  line-height: 25px;
-  background: rgba(245, 247, 245, 0.6);
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0px 1px 2px #666666;
+  margin: 2.5% auto;
+  background-color: #fff17a;
 }
 
-#subwrapper {
+#sub-wrapper {
   position: relative;
+  top: 15%;
 }
 
 button {
@@ -30,10 +26,10 @@ button {
   width: 50%;
   height: 20%;
   margin: 0 auto;
-  border: none;
+  font-size: 42px;
   cursor: pointer;
   background: transparent;
-  font-size: 45px;
+  border: 0;
 }
 
 img {
@@ -41,31 +37,30 @@ img {
 }
 
 h1 {
-  font-family: "Ubuntu", sans-serif;
+  padding-top: 2.5%;
+  font-family: Geo, sans-serif;
   font-size: 6.5em;
   font-weight: bold;
-  color: #e911b3;
-  padding-top: 2.5%;
+  color: blue;
 }
 
 h2 {
-  font-size: 35px;
   margin-bottom: 25px;
+  font-size: 35px;
 }
 
 h3 {
-  font-size: 25px;
   margin-bottom: 10px;
+  font-size: 25px;
 }
 
 #start {
-  margin-top: 5%;
-  margin-bottom: 30%;
+  margin-top: 10%;
+  background: pink;
   border: 2px solid blue;
-  background: #e911b3;
 }
 
 button:hover {
+  background: pink;
   border: 2px solid blue;
-  background: #e911b3;
 }
